@@ -121,7 +121,7 @@
                         <input class="w3-input w3-border w3-margin-bottom" type="text" name='name' required>
                         <button class="w3-button w3-dark-grey w3-section w3-padding" type="submit" name="submit"><strong style='color:black'>Submit</strong></button>
                     </form>
-
+                        <button class="w3-button w3-dark-grey" onclick="document.getElementById('history').style.display='block';"><strong style='color:black'><i class="fa fa-history"></i> View today's attendance</strong></button>
                 </div>
                 <div class="w3-quarter w3-section">
                 </div>
@@ -129,6 +129,34 @@
 
             <br>
             <footer class="w3-center"> Copyright © 2013-2020 The Ultimate Gym. All rights reserved.</footer>
+        </div>
+        <div id="history" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top" style="max-width:600px">
+                <div class="w3-center">
+                    <br>
+                    <span onclick="document.getElementById('history').style.display='none'" class="w3-button w3-xlarge w3-hover-black w3-display-topright" style='color:black'>&times;</span>
+                </div>
+                <div class="w3-container" style="color:black">
+                    <h2><i class="fa fa-history"></i> Member Attendance</h2>
+                        <?php
+                            $query = "SELECT * FROM attendance JOIN member ON attendance.member_id = member.member_id WHERE attendance.attendance_date = '".date("Y-m-d")."' ORDER BY attendance.attendance_date DESC";
+                            $ret = mysqli_query($conn, $query);
+                            if(mysqli_num_rows($ret)>0){
+                                echo('<table class="w3-table w3-section" style="color:black"><tr><th><strong>Member Name</strong></th>');
+                                echo("<th><strong>Attendance Time</strong></th></tr>");
+                                while($row = mysqli_fetch_assoc($ret)){
+                                    $date = date('g:i A',strtotime($row['attendance_time']));
+                                    echo("<tr><td>{$row['member_fname']} {$row['member_lname']}</td>");
+                                    echo("<td>{$date}</td></tr>");
+                                    
+                                }
+                                echo("</table>");
+                            }else{
+                                echo("<br><strong>No attendance record found.</strong><br><br>");
+                            }
+                        ?>
+                </div>
+            </div>
         </div>
         <div id="logout" class="w3-modal w3-center">
             <div class="w3-modal-content w3-animate-top" style="max-width:600px">

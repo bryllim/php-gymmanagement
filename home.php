@@ -116,7 +116,7 @@
                 <hr class="w3-opacity" style="width:200px">
                 <ul class="w3-ul">
                     <?php
-                  $sql = "SELECT * FROM home ORDER BY home_announcement_datetime DESC";
+                  $sql = "SELECT * FROM home ORDER BY home_announcement_datetime DESC LIMIT 5";
                   $return = mysqli_query($conn, $sql);
 
                   while($row = mysqli_fetch_assoc($return)){

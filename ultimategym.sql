@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2018 at 10:14 AM
+-- Generation Time: Mar 19, 2018 at 04:35 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -49,7 +49,15 @@ INSERT INTO `attendance` (`attendance_id`, `member_id`, `attendance_date`, `atte
 (7, 36, '2018-03-14', '03:18:48'),
 (8, 31, '2018-03-15', '04:24:03'),
 (9, 35, '2018-03-15', '10:16:43'),
-(10, 34, '2018-03-16', '09:02:21');
+(10, 34, '2018-03-16', '09:02:21'),
+(12, 39, '2018-03-21', '01:53:51'),
+(16, 39, '2018-03-19', '03:17:16'),
+(17, 34, '2018-03-19', '03:19:50'),
+(18, 37, '2018-03-19', '03:21:07'),
+(19, 35, '2018-03-19', '03:21:21'),
+(20, 39, '2018-03-20', '03:22:45'),
+(21, 35, '2018-03-20', '03:22:52'),
+(22, 31, '2018-03-19', '04:26:11');
 
 -- --------------------------------------------------------
 
@@ -70,7 +78,9 @@ CREATE TABLE `home` (
 INSERT INTO `home` (`home_id`, `home_announcement`, `home_announcement_datetime`) VALUES
 (16, 'The bench press area is currently under maintenance. We are sorry for the inconvenience.', '2018-03-05 03:05:15'),
 (18, 'Found an iPhone X in the shower room. If this is yours, please contact the staff to guide you.', '2018-03-13 04:01:51'),
-(19, 'The gym will be closed tomorrow due to a gas leakage. We are sorry for the inconvenience.', '2018-03-13 11:54:18');
+(19, 'The gym will be closed tomorrow due to a gas leakage. We are sorry for the inconvenience.', '2018-03-13 11:54:18'),
+(20, 'The gym will be closed tomorrow due to a gas leakage. We are sorry for the inconvenience.', '2018-03-21 01:53:18'),
+(21, 'Test announcement', '2018-03-21 01:57:52');
 
 -- --------------------------------------------------------
 
@@ -95,13 +105,13 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_fname`, `member_lname`, `member_password`, `member_bdate`, `member_age`, `member_sex`, `member_address`, `member_email`) VALUES
-(26, 'Mark Eleazer', 'Salazar', '202cb962ac59075b964b07152d234b70', '1992-02-03', 26, 'Male', 'Minglanilla, Cebu, Visayas', 'mark@gmail.com'),
-(31, 'Justeeen', 'Manigo', '202cb962ac59075b964b07152d234b70', '1998-01-30', 20, 'Male', 'Baybay, Leyte', 'justin@gmail.com'),
+(31, 'Justeeen', 'Manigo', '202cb962ac59075b964b07152d234b70', '1998-01-30', 20, 'Male', 'Baybay, Leyte, Visayas Region XIII', 'justin@gmail.com'),
 (34, 'Mar', 'Manuel', '202cb962ac59075b964b07152d234b70', '1998-11-13', 19, 'Female', 'Forest Hills, Banawa', 'mar@gmail.com'),
 (35, 'Joshua', 'Verano', '202cb962ac59075b964b07152d234b70', '1997-11-27', 20, 'Male', 'Mandaue City', 'joshua@gmail.com'),
 (36, 'Christian', 'Vargan', '202cb962ac59075b964b07152d234b70', '1998-05-05', 19, 'Male', 'Talamban', 'chris@gmail.com'),
 (37, 'Andrew', 'Edioma', '202cb962ac59075b964b07152d234b70', '1997-11-02', 20, 'Male', 'Gandhi, India', 'andrew@gmail.com'),
-(38, 'Joji', 'Shiotsuki', '202cb962ac59075b964b07152d234b70', '1997-05-25', 20, 'Male', 'Pahak, Nagoya, Lapu-Lapu', 'joji@gmail.com');
+(38, 'Joji', 'Shiotsuki', '202cb962ac59075b964b07152d234b70', '1997-05-25', 20, 'Male', 'Pahak, Nagoya, Lapu-Lapu', 'joji@gmail.com'),
+(39, 'Don', 'Singh', '202cb962ac59075b964b07152d234b70', '1993-08-07', 24, 'Male', 'Leyte', 'don@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -123,13 +133,13 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `member_id`, `payment_status`, `payment_validity`, `payment_days_left`, `payment_datetracker`) VALUES
-(34, 35, 'PAID', '2021-03-08', 831, '2018-03-17'),
-(35, 26, 'PAID', '2020-03-08', 120, '2018-03-15'),
+(34, 35, 'PAID', '2021-03-08', 829, '2018-03-19'),
 (36, 31, 'PAID', '2019-03-13', 150, '2018-03-15'),
-(38, 34, 'PAID', '2019-03-14', 60, '2018-03-13'),
+(38, 34, 'PAID', '2019-03-14', 115, '2018-03-18'),
 (39, 36, 'PAID', '2019-03-14', 30, '2018-03-14'),
 (40, 37, 'PAID', '2020-03-08', 210, '2018-03-14'),
-(41, 38, 'PAID', '2020-03-13', 90, '2018-03-14');
+(41, 38, 'PAID', '2020-03-13', 120, '2018-03-21'),
+(42, 39, 'PAID', '2019-03-19', 86, '2018-03-19');
 
 -- --------------------------------------------------------
 
@@ -153,7 +163,10 @@ INSERT INTO `profit` (`profit_id`, `profit_date`, `profit_amount`) VALUES
 (4, '2018-03-13', 3800),
 (5, '2018-03-14', 6400),
 (6, '2018-03-15', 1600),
-(7, '2018-03-16', 3200);
+(7, '2018-03-16', 3200),
+(8, '2018-03-18', 1600),
+(9, '2018-03-19', 2400),
+(10, '2018-03-21', 1600);
 
 -- --------------------------------------------------------
 
@@ -181,11 +194,11 @@ INSERT INTO `program` (`program_name`, `program_number`, `program_day1`, `progra
 ('bulking', 3, 'Inclined Bench Press', 'One-arm Tricep Lift', 'Deadlift', 'Deadlift', 'Leg Press Machine'),
 ('bulking', 4, 'Push-ups', 'Rope Pull', 'Dumbbell Pull-ups', 'Dumbbell Pull-ups', 'Sit ups'),
 ('bulking', 5, 'Declined Bench Press', 'Lateral Push Down', 'Jumping Jacks', 'Jumping Jacks', 'Crunches'),
-('cutting', 6, 'asdsadsafd', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
-('cutting', 7, 'asfsaf', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
-('cutting', 8, 'dsgasdg', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
-('cutting', 9, 'dsagf', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
-('cutting', 10, 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
+('cutting', 6, 'Dumbbell Press', 'Normal Exercise', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
+('cutting', 7, 'Dips', 'Hard Exercise', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
+('cutting', 8, 'Inclined Bench Press', 'Cardio Exercise', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
+('cutting', 9, 'Push-ups', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
+('cutting', 10, 'Declined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press'),
 ('cardio', 11, 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Squats'),
 ('cardio', 12, 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Lunges'),
 ('cardio', 13, 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Inclined Bench Press', 'Leg Press Machine'),
@@ -241,7 +254,9 @@ INSERT INTO `progress` (`progress_id`, `member_id`, `progress_1`, `progress_2`, 
 (11, 37, 100, 120, 120, 100, 300, 250, 999, 0, 0, 0, 0, 0, '0000-00-00', '2018-03-08', '2018-03-08', '2018-03-08', '2018-03-08', '2018-03-08', '2018-03-13', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (12, 38, 92, 93, 95, 90, 91, 97, 0, 0, 0, 0, 0, 0, '2018-03-13', '2018-03-13', '2018-03-13', '2018-03-13', '2018-03-13', '2018-03-13', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (13, 36, 90, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-14', '2018-03-14', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(14, 31, 80, 100, 120, 80, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-15', '2018-03-15', '2018-03-15', '2018-03-15', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
+(14, 31, 80, 100, 120, 80, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-15', '2018-03-15', '2018-03-15', '2018-03-15', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(15, 34, 19, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-18', '2018-03-18', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(16, 39, 85, 82, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2018-03-20', '2018-03-21', '2018-03-21', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -300,31 +315,31 @@ ALTER TABLE `progress`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `home`
 --
 ALTER TABLE `home`
-  MODIFY `home_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `home_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `profit`
 --
 ALTER TABLE `profit`
-  MODIFY `profit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `profit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `program`
@@ -336,7 +351,7 @@ ALTER TABLE `program`
 -- AUTO_INCREMENT for table `progress`
 --
 ALTER TABLE `progress`
-  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

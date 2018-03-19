@@ -69,7 +69,7 @@
             <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
                 <h1 class="w3-jumbo"><strong>Manage Members</strong></h1>
             </header>
-            <table class="w3-table w3-border w3-responsive">
+            <table class="w3-table w3-border w3-responsive" style='font-family: sans-serif;'>
                 <tr>
                     <th>ID</th>
                     <th>First Name</th>
@@ -100,7 +100,7 @@
                    $address = $row["member_address"];
                    $email = $row["member_email"];
 
-                    echo "<tr><td>". $id . "</td><td>". $fname. "</td><td>" . $lname. "</td><td>". $bdate. "</td><td>". $age. "</td><td>". $sex. "</td><td>". $address. "</td><td>" . $email. "</td><td><button class='w3-button w3-grey' onclick=\"document.getElementById('". $email. "').style.display='block'\"><span class='fa fa-credit-card'></span> Payment</button></td><td><button class='w3-button w3-dark-grey' onclick=\"document.getElementById('". $id. "').style.display='block'\"><span class='fa fa-edit'></span> Edit</button></tr>";
+                    echo "<tr><td>". $id . "</td><td>". $fname. "</td><td>" . $lname. "</td><td>". $bdate. "</td><td>". $age. "</td><td>". $sex. "</td><td>". $address. "</td><td>" . $email. "</td><td><button class='w3-button w3-black' onclick=\"document.getElementById('".$email.$id. "').style.display='block'\"><span class='fa fa-calendar-alt'></span></button></td><td><button class='w3-button w3-grey' onclick=\"document.getElementById('". $email. "').style.display='block'\"><span class='fa fa-credit-card'></span> Payment</button></td><td><button class='w3-button w3-dark-grey' onclick=\"document.getElementById('". $id. "').style.display='block'\"><span class='fa fa-edit'></span> Edit</button></td></tr>";
 
                    echo '<div id="'. $id. '" class="w3-modal">
                        <div class="w3-modal-content w3-animate-right w3-card-4">
@@ -188,7 +188,32 @@
                        </div>
                      </div>';
                    }
+                   
+                   $qry2 = "SELECT * FROM attendance WHERE member_id = {$id}";
+                   $rt2 = mysqli_query($conn, $qry2);
+                   $attendancethings = " ";
 
+                   while($rw2 = mysqli_fetch_assoc($rt2)){
+                    
+                    while($rw2 = mysqli_fetch_assoc($rt2)){ 
+                    $attendancethings = $attendancethings."<li>".date('F j, Y',strtotime($rw2["attendance_date"]))." - ".  date('g:i A',strtotime($rw2['attendance_time']))."</li>";
+                    }
+
+                   echo '<div id="'.$email.$id. '" class="w3-modal">
+                       <div class="w3-modal-content w3-animate-right w3-card-4">
+                         <header class="w3-container w3-black"> 
+                           <span onclick="document.getElementById(\''.$email.$id.'\').style.display=\'none\'" 
+                           class="w3-button w3-display-topright">&times;</span>
+                           <h2>Attendance History | <strong>'. $fname. ' '. $lname. '</strong></h2>
+                         </header>
+                         <div class="w3-container w3-white">
+                            <ul>
+                                '.$attendancethings.'
+                            </ul>
+                         </div>
+                       </div>
+                     </div>';
+                   }
                }
 
                if(isset($_POST['update'])){
